@@ -37,7 +37,8 @@ class MessageService {
 
     async updateMessage(id, userId, title, content, attachment) {
         const message = await messageRepository.findOne({
-            where: { id, userId }
+            where: { id, userId },
+            attributes: ['id', 'title', 'content', 'userId', 'attachment', 'likes', 'createdAt', 'updatedAt']
         });
 
         if (!message) {
@@ -63,7 +64,8 @@ class MessageService {
 
     async deleteMessage(id, userId) {
         const message = await messageRepository.findOne({
-            where: { id, userId }
+            where: { id, userId },
+            attributes: ['id', 'title', 'content', 'userId', 'attachment', 'likes', 'createdAt', 'updatedAt']
         });
 
         if (!message) {

@@ -5,10 +5,10 @@ const {
 module.exports = (sequelize, DataTypes) => {
   class Article extends Model {
     static associate(models) {
-      // Temporairement commenté
-      // Article.belongsTo(models.User, {
-      //   foreignKey: 'userId'
-      // });
+      // Décommenter l'association
+      Article.belongsTo(models.User, {
+        foreignKey: 'userId'
+      });
     }
   }
   Article.init({
@@ -20,7 +20,6 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.TEXT,
       allowNull: false
     },
-    // userId temporairement modifié pour être optionnel
     userId: {
       type: DataTypes.INTEGER,
       allowNull: true

@@ -57,7 +57,8 @@ class ArticleService {
 
     async updateArticle(id, userId, title, content, image) {
         const article = await articleRepository.findOne({
-            where: { id, userId }
+            where: { id, userId },
+            attributes: ['id', 'title', 'content', 'userId', 'image', 'likes', 'createdAt', 'updatedAt']
         });
 
         if (!article) {
@@ -83,7 +84,8 @@ class ArticleService {
 
     async deleteArticle(id, userId) {
         const article = await articleRepository.findOne({
-            where: { id, userId }
+            where: { id, userId },
+            attributes: ['id', 'title', 'content', 'userId', 'image', 'likes', 'createdAt', 'updatedAt']
         });
 
         if (!article) {
